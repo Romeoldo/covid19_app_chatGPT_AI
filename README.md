@@ -31,7 +31,19 @@ Make sure you have Python installed along with the necessary libraries:
 
 ```bash
 pip install requests openai
+```
+
+### Make sure to install the `python-dotenv` package to load these environment variables:
+
+```bash
 pip install python-dotenv
+
+### Set Up Environment Variables
+
+Create a .env file in the root directory of your project and add your OpenAI API key:
+
+```bash
+OPENAI_API_KEY=your_openai_api_key_here
 ```
 
 ## Steps to Create the Web Application with Flask
