@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COVID-19 ChatGPT Assistant</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>COVID-19 ChatGPT Assistant</h1>
+        <div class="input-container">
+            <input type="text" id="countryInput" placeholder="Enter the name of the country">
+            <button onclick="startConversation()">Start Conversation</button>
+        </div>
+        <div class="conversation" id="conversation"></div>
+        <div class="follow-up-container">
+            <input type="text" id="followUpInput" placeholder="Enter your follow-up question">
+            <button onclick="askFollowUp()">Ask Follow-Up</button>
+        </div>
+    </div>
+    <script>
+        async function startConversation() {
+            const country = document.getElementById('countryInput').value;
+            const response = await fetch('/start_conversation', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ country: country })
+            });
+            const data = await response.json();
+            document.getElementById('conversation').innerHTML += `<p><strong>User:</strong> Provide detailed COVID-19 information for ${country}</p>`;
+            document.getElementById('conversation').innerHTML += `<p><strong>ChatGPT:</strong> ${data.response}</p>`;
+        }
+
+        async function askFollowUp() {
+            const followUp = document.getElementById('followUpInput').value;
+            const response = await fetch('/ask_follow_up', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ follow_up: followUp })
+            });
+            const data = await response.json();
+            document.getElementById('conversation').innerHTML += `<p><strong>User:</strong> ${followUp}</p>`;
+            document.getElementById('conversation').innerHTML += `<p><strong>ChatGPT:</strong> ${data.response}</p>`;
+        }
+    </script>
+</body>
+</html>
+
+
+
+<!-- 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COVID-19 ChatGPT Assistant</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>COVID-19 ChatGPT Assistant</h1>
+        <div class="input-container">
+            <input type="text" id="countryInput" placeholder="Enter the name of the country">
+            <button onclick="startConversation()">Start Conversation</button>
+        </div>
+        <div class="conversation" id="conversation"></div>
+        <div class="follow-up-container">
+            <input type="text" id="followUpInput" placeholder="Enter your follow-up question">
+            <button onclick="askFollowUp()">Ask Follow-Up</button>
+        </div>
+    </div>
+    <script>
+        async function startConversation() {
+            const country = document.getElementById('countryInput').value;
+            const response = await fetch('/start_conversation', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ country: country })
+            });
+            const data = await response.json();
+            document.getElementById('conversation').innerHTML += `<p><strong>User:</strong> Provide detailed COVID-19 information for ${country}</p>`;
+            document.getElementById('conversation').innerHTML += `<p><strong>ChatGPT:</strong> ${data.response}</p>`;
+        }
+
+        async function askFollowUp() {
+            const followUp = document.getElementById('followUpInput').value;
+            const response = await fetch('/ask_follow_up', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ follow_up: followUp })
+            });
+            const data = await response.json();
+            document.getElementById('conversation').innerHTML += `<p><strong>User:</strong> ${followUp}</p>`;
+            document.getElementById('conversation').innerHTML += `<p><strong>ChatGPT:</strong> ${data.response}</p>`;
+        }
+    </script>
+</body>
+</html>
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COVID-19 ChatGPT Assistant</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>COVID-19 ChatGPT Assistant</h1>
+        <div class="input-container">
+            <input type="text" id="countryInput" placeholder="Enter the name of the country">
+            <button onclick="startConversation()">Start Conversation</button>
+        </div>
+        <div class="conversation" id="conversation"></div>
+        <div class="follow-up-container">
+            <input type="text" id="followUpInput" placeholder="Enter your follow-up question">
+            <button onclick="askFollowUp()">Ask Follow-Up</button>
+        </div>
+    </div>
+    <script>
+        async function startConversation() {
+            const country = document.getElementById('countryInput').value;
+            const response = await fetch('/start_conversation', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ country: country })
+            });
+            const data = await response.json();
+            document.getElementById('conversation').innerHTML += `<p><strong>User:</strong> Provide detailed COVID-19 information for ${country}</p>`;
+            document.getElementById('conversation').innerHTML += `<p><strong>ChatGPT:</strong> ${data.response}</p>`;
+        }
+
+        async function askFollowUp() {
+            const followUp = document.getElementById('followUpInput').value;
+            const response = await fetch('/ask_follow_up', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ follow_up: followUp })
+            });
+            const data = await response.json();
+            document.getElementById('conversation').innerHTML += `<p><strong>User:</strong> ${followUp}</p>`;
+            document.getElementById('conversation').innerHTML += `<p><strong>ChatGPT:</strong> ${data.response}</p>`;
+        }
+    </script>
+</body>
+</html> --> -->
