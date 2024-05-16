@@ -37,6 +37,7 @@ pip install requests openai
 
 ```bash
 pip install python-dotenv
+```
 
 ### Set Up Environment Variables
 
