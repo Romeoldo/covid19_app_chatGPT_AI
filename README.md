@@ -31,6 +31,7 @@ Make sure you have Python installed along with the necessary libraries:
 
 ```bash
 pip install requests openai
+pip install python-dotenv
 ```
 
 ## Steps to Create the Web Application with Flask
